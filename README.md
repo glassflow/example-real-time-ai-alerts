@@ -11,8 +11,8 @@ Before you begin, ensure you have [Python](https://www.python.org/downloads/) an
 First, clone the repository to your local machine:
 
 ```bash
-git clone [URL to your GitHub repo]
-cd [Your Repo Name]
+git clone https://github.com/glassflow/example-real-time-ai-alerts.git
+cd example-real-time-ai-alerts
 ```
 
 ### Set Up Python Environment
