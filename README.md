@@ -2,6 +2,8 @@
 
 This innovative solution combining real-time [weather](https://www.weatherapi.com/) monitoring with AI-powered interactions. This application uses [Streamlit](https://streamlit.io/) for the frontend, Python and [NATS](https://nats.io/) for the backend, and integrates [OpenAI's GPT](https://openai.com/api/) model for decision making, setting alerts and intelligent responses. Read more on this article:
 
+https://learn.glassflow.dev/blog/usecases/revolutionizing-real-time-alerts-with-ai-nats-and-streamlit
+
 ## Installation
 
 Before you begin, ensure you have [Python](https://www.python.org/downloads/) and [Docker](https://www.docker.com/products/docker-desktop/) installed on your system. This project requires Python 3.6 or later.
