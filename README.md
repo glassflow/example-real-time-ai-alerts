@@ -4,6 +4,8 @@ This innovative solution combining real-time [weather](https://www.weatherapi.co
 
 https://learn.glassflow.dev/blog/usecases/revolutionizing-real-time-alerts-with-ai-nats-and-streamlit
 
+![How the alert app works demo](/assets/Real-time%20Weather%20Alert%20Chat%20(1).gif)
+
 ## Installation
 
 Before you begin, ensure you have [Python](https://www.python.org/downloads/) and [Docker](https://www.docker.com/products/docker-desktop/) installed on your system. This project requires Python 3.6 or later.
