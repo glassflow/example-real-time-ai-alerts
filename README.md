@@ -1,7 +1,7 @@
 # Real-Time Weather Alert Chat with AI
 
 
-In this guide, you will learn how to build a real-time weather alert chat application using GlassFlow SDK and Streamlit.
+In this guide, you will learn how to build a real-time weather alert chat application using [GlassFlow SDK](https://github.com/glassflow/glassflow-examples) and Streamlit.
 
 ## Features
 This AI-powered alerting has following features:
