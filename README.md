@@ -14,12 +14,7 @@ This AI-powered alerting has following features:
 
 ## Installation
 
-### Pre-requisites
-
-- Create your free GlassFlow account via the [GlassFlow WebApp](https://app.glassflow.dev).
-- Get your [Personal Access Token](https://app.glassflow.dev/profile) to authorize the Python SDK to interact with GlassFlow Cloud.
-- OpenAI API Key: Sign up at [OpenAI](https://platform.openai.com/) and get an API key.
-- WeatherAPI Key: Sign up at [WeatherAPI](https://www.weatherapi.com/) to fetch weather data.
+Before you begin, ensure you have [Python](https://www.python.org/downloads/) and [Docker](https://www.docker.com/products/docker-desktop/) installed on your system. This project requires Python 3.6 or later.
 
 ### Clone the Repository
 
@@ -47,6 +42,14 @@ Install the required Python packages:
 pip install -r requirements.txt
 ```
 
+### Set Up NATS Server with Docker
+
+Ensure Docker is running on your machine. Then, start the NATS server using Docker Compose:
+
+```bash
+docker compose up -d
+```
+
 ## Configuration
 
 ### Environment Variables
@@ -54,7 +57,6 @@ pip install -r requirements.txt
 Create a `.env` file in the root directory of the project and add your OpenAI and [Weather API](https://api.weatherapi.com/) keys:
 
 ```
-GLASSFLOW_PERSONAL_ACCESS_TOKEN=your_glassflow_access_token
 OPENAI_API_KEY=your_openai_api_key
 WEATHER_API_KEY=your_weather_api_key
 ```
@@ -63,41 +65,28 @@ Replace `your_openai_api_key` and `your_weather_api_key` with your actual API ke
 
 ## Running the Application
 
-### Create a GlassFlow pipeline
+### Start the Backend
 
-Creates a new Space and Pipeline and returns Pipeline ID in the console:
-
-```bash
-python create_pipeline.py
-```
-
-Output:
-
-```text
-Pipeline is deployed!
-Pipeline Id = 08420372-02f5-4d06-b2b5-330382474c77
-Pipeline URL https://app.glassflow.dev/pipelines/08420372-02f5-4d06-b2b5-330382474c77 
-```
-
-### Update Pipeline ID in the .env file
+Run the backend server with:
 
 ```bash
-GLASSFLOW_PIPELINE_ID=your_new_pipeline_id
+python backend.py
 ```
 
 ### Start the Streamlit Frontend
 
-Launch the Streamlit weather alert application:
+In a new terminal, launch the Streamlit application:
 
 ```bash
 
-streamlit run alert_streamlit_app.py
+streamlit run frontend.py
 ```
 
 ## Testing the Application
 
 1. **Interact with the Chat**: Open the Streamlit app in your web browser and try sending messages or asking questions.
 2. **Set Weather Alerts**: Use the interface to set custom weather alerts and see how the application responds.
+3. **Monitor NATS Server**: Optionally, you can monitor the NATS server at `http://localhost:8222`.
 
 ## Shutting Down
 
@@ -105,6 +94,11 @@ To stop the application:
 
 1. Close the Streamlit app.
 2. Terminate the backend script (`Ctrl+C` in the terminal).
+3. Stop the NATS server with Docker Compose:
+    
+    ```bash
+    docker compose down
+    ```
 
 ## Contributing
 

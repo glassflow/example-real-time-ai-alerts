@@ -1,4 +1,8 @@
 streamlit
-glassflow
+nats-python
 requests
+openai
 python-dotenv
+asyncio
+aiohttp
+nats-py
