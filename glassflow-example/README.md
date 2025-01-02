@@ -1,14 +1,25 @@
-# AI Real-time Weather Alert Chat Application
+# Real-Time Weather Alert Chat with AI
 
-This innovative solution combining real-time [weather](https://www.weatherapi.com/) monitoring with AI-powered interactions. This application uses [Streamlit](https://streamlit.io/) for the frontend, Python and [NATS](https://nats.io/) for the backend, and integrates [OpenAI's GPT](https://openai.com/api/) model for decision making, setting alerts and intelligent responses. Read more on this article:
 
-https://learn.glassflow.dev/blog/usecases/revolutionizing-real-time-alerts-with-ai-nats-and-streamlit
+In this guide, you will learn how to build a real-time weather alert chat application using [GlassFlow SDK](https://github.com/glassflow/glassflow-examples) and Streamlit.
+
+## Features
+This AI-powered alerting has following features:
+
+- Continuously monitoring weather conditions.
+- Allowing users to define custom alert criteria in natural language.
+- Providing personalized, real-time alerts when conditions are met.
 
 ![How the alert app works demo](/assets/Real-time%20Weather%20Alert%20Chat%20(1).gif)
 
 ## Installation
 
-Before you begin, ensure you have [Python](https://www.python.org/downloads/) and [Docker](https://www.docker.com/products/docker-desktop/) installed on your system. This project requires Python 3.6 or later.
+### Pre-requisites
+
+- Create your free GlassFlow account via the [GlassFlow WebApp](https://app.glassflow.dev).
+- Get your [Personal Access Token](https://app.glassflow.dev/profile) to authorize the Python SDK to interact with GlassFlow Cloud.
+- OpenAI API Key: Sign up at [OpenAI](https://platform.openai.com/) and get an API key.
+- WeatherAPI Key: Sign up at [WeatherAPI](https://www.weatherapi.com/) to fetch weather data.
 
 ### Clone the Repository
 
@@ -36,14 +47,6 @@ Install the required Python packages:
 pip install -r requirements.txt
 ```
 
-### Set Up NATS Server with Docker
-
-Ensure Docker is running on your machine. Then, start the NATS server using Docker Compose:
-
-```bash
-docker compose up -d
-```
-
 ## Configuration
 
 ### Environment Variables
@@ -51,6 +54,7 @@ docker compose up -d
 Create a `.env` file in the root directory of the project and add your OpenAI and [Weather API](https://api.weatherapi.com/) keys:
 
 ```
+GLASSFLOW_PERSONAL_ACCESS_TOKEN=your_glassflow_access_token
 OPENAI_API_KEY=your_openai_api_key
 WEATHER_API_KEY=your_weather_api_key
 ```
@@ -59,28 +63,41 @@ Replace `your_openai_api_key` and `your_weather_api_key` with your actual API ke
 
 ## Running the Application
 
-### Start the Backend
+### Create a GlassFlow pipeline
 
-Run the backend server with:
+Creates a new Space and Pipeline and returns Pipeline ID in the console:
 
 ```bash
-python backend.py
+python create_pipeline.py
+```
+
+Output:
+
+```text
+Pipeline is deployed!
+Pipeline Id = 08420372-02f5-4d06-b2b5-330382474c77
+Pipeline URL https://app.glassflow.dev/pipelines/08420372-02f5-4d06-b2b5-330382474c77 
+```
+
+### Update Pipeline ID in the .env file
+
+```bash
+GLASSFLOW_PIPELINE_ID=your_new_pipeline_id
 ```
 
 ### Start the Streamlit Frontend
 
-In a new terminal, launch the Streamlit application:
+Launch the Streamlit weather alert application:
 
 ```bash
 
-streamlit run frontend.py
+streamlit run alert_streamlit_app.py
 ```
 
 ## Testing the Application
 
 1. **Interact with the Chat**: Open the Streamlit app in your web browser and try sending messages or asking questions.
 2. **Set Weather Alerts**: Use the interface to set custom weather alerts and see how the application responds.
-3. **Monitor NATS Server**: Optionally, you can monitor the NATS server at `http://localhost:8222`.
 
 ## Shutting Down
 
@@ -88,11 +105,6 @@ To stop the application:
 
 1. Close the Streamlit app.
 2. Terminate the backend script (`Ctrl+C` in the terminal).
-3. Stop the NATS server with Docker Compose:
-    
-    ```bash
-    docker compose down
-    ```
 
 ## Contributing
 
