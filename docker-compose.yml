@@ -1,0 +1,10 @@
+version: '3.5'
+
+services:
+  nats-server:
+    image: nats:latest
+    restart: always
+    ports:
+      - "8222:8222"
+      - "6222:6222"
+      - "4222:4222"
